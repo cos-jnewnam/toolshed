@@ -4,9 +4,9 @@ const REPO = 'cos-jnewnam/toolshed';
 const WORKFLOW_FILE = 'sync-and-deploy.yml';
 const QUICK_FILTERS = [
   ['', 'All'],
-  ['prompt', 'Prompts'],
-  ['cli', 'CLI'],
-  ['snippet', 'Snippets'],
+  ['prompt', 'Prompts', 'fa-brands fa-markdown'],
+  ['cli', 'CLI', 'fa-solid fa-terminal'],
+  ['snippet', 'Snippets', 'fa-solid fa-code'],
 ];
 
 const $ = (sel) => document.querySelector(sel);
@@ -128,16 +128,15 @@ function renderFilters() {
   const buttons = [...QUICK_FILTERS];
   // If a non-quick tag is active, show it so it can be cleared.
   if (state.tag && !known.has(state.tag)) buttons.push([state.tag, `#${state.tag}`]);
-  for (const [tag, label] of buttons) {
+  for (const [tag, label, icon] of buttons) {
     const active = state.tag === tag;
     wrap.append(
       el('button', {
         type: 'button',
         class: 'chip' + (active ? ' active' : ''),
         'aria-pressed': String(active),
-        text: label,
         onclick: () => setTag(tag),
-      })
+      }, el('span', { text: label }), icon && el('i', { class: icon, 'aria-hidden': 'true' }))
     );
   }
 }
