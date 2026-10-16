@@ -329,6 +329,8 @@ main,
   color: var(--fg);
   overflow-wrap: anywhere;
 }
+.file-name > i { color: var(--muted); }
+span.file-name > i { margin-left: 8px; }
 
 .file > summary,
 .card > p.file-name {
