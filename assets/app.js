@@ -36,6 +36,8 @@ async function getJSON(url) {
   }
 }
 
+const isReadme = (f) => /^readme(\.|$)/i.test(f.name);
+
 function normalize(gistData, extras) {
   const out = [];
   for (const g of gistData?.items || []) {
@@ -47,7 +49,7 @@ function normalize(gistData, extras) {
       url: g.url,
       tags: g.tags || [],
       updated: g.updated,
-      files: g.files || [],
+      files: [...(g.files || [])].sort((a, b) => isReadme(b) - isReadme(a)),
     });
   }
   (extras || []).forEach((x, i) => {
