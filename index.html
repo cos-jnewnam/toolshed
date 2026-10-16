@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Toolshed</title>
+  <meta name="description" content="Prompts, CLI commands, and snippets, searchable by keyword.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="preload" href="assets/fonts/Archivo-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/JetBrainsMono-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Toolshed</h1>
+    <p class="sub">Prompts, CLI commands, and snippets.</p>
+  </header>
+
+  <main>
+    <section class="controls" aria-label="Search and filters">
+      <label class="visually-hidden" for="q">Search</label>
+      <input id="q" type="search" placeholder="Search by keyword (press / to focus)" autocomplete="off">
+      <div id="filters" class="filters" role="group" aria-label="Filter by type"></div>
+      <p id="status" class="status" aria-live="polite"></p>
+    </section>
+
+    <section id="results" class="results" aria-label="Results"></section>
+  </main>
+
+  <footer class="site-footer">
+    <span id="synced">Not synced yet</span>
+    <a id="sync-now" href="#" target="_blank" rel="noopener">Sync now</a>
+  </footer>
+
+  <script type="module" src="assets/app.js"></script>
+</body>
+</html>
