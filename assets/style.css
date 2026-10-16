@@ -26,7 +26,7 @@
 
   --gutter: 16px;
   --pad: 16px;
-  --measure: 54rem;
+  --measure: 1100px;
 
   /* Light. Text pairs are 4.5:1 or better. --line is 3:1 or better on --bg, --surface and --code-bg. */
   --bg: #f4f4f5;
@@ -217,9 +217,19 @@ main,
 
 .results {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
   gap: 12px;
   margin: 0 0 32px;
   counter-reset: entry;
+}
+
+@media (min-width: 640px) {
+  .results { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 960px) {
+  .results { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 .results:empty {
@@ -233,7 +243,7 @@ main,
   padding: var(--pad);
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 2px;
+  border-radius: 0;
   counter-increment: entry;
 }
 /* Cards that end in a file row run that row to the bottom edge. */
