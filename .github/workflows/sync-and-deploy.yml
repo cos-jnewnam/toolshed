@@ -30,8 +30,8 @@ jobs:
       - name: Pull gists
         run: node scripts/sync-gists.mjs
         env:
+          # No token: the Actions GITHUB_TOKEN gets a 403 on the gists API, and public gists don't need auth.
           GH_USER: cos-jnewnam
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Assemble site
         run: |
