@@ -39,11 +39,14 @@ async function getJSON(url) {
 const isReadme = (f) => /^readme(\.|$)/i.test(f.name);
 const isMarkdown = (f) => f.language === 'Markdown' || /\.(md|markdown)$/i.test(f.name);
 
-function fileLabel(f) {
-  const icon = el('i', {
-    class: isMarkdown(f) ? 'fa-brands fa-markdown' : 'fa-solid fa-code',
-    'aria-hidden': 'true',
-  });
+function fileIcon(f, it) {
+  if (isMarkdown(f)) return 'fa-brands fa-markdown';
+  if (it.tags.includes('cli')) return 'fa-solid fa-terminal';
+  return 'fa-solid fa-code';
+}
+
+function fileLabel(f, it) {
+  const icon = el('i', { class: fileIcon(f, it), 'aria-hidden': 'true' });
   return [el('span', { class: 'file-label', text: f.name }), icon];
 }
 
@@ -162,7 +165,7 @@ function renderCard(it) {
 
   for (const f of it.files) {
     if (!f.content) {
-      card.append(el('p', { class: 'file-name' }, ...fileLabel(f)));
+      card.append(el('p', { class: 'file-name' }, ...fileLabel(f, it)));
       continue;
     }
     const pre = el('pre', {}, el('code', { text: f.content }));
@@ -180,7 +183,7 @@ function renderCard(it) {
         setTimeout(() => (e.target.textContent = 'Copy'), 1500);
       },
     });
-    const summary = el('summary', {}, el('span', { class: 'file-name' }, ...fileLabel(f)));
+    const summary = el('summary', {}, el('span', { class: 'file-name' }, ...fileLabel(f, it)));
     const body = el('div', { class: 'file-body' }, el('div', { class: 'file-actions' }, copy), pre);
     if (f.truncated) {
       body.append(el('p', { class: 'note' }, 'Truncated. ', el('a', { href: f.raw, target: '_blank', rel: 'noopener', text: 'View raw file' })));
