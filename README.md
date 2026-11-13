@@ -26,6 +26,8 @@ Search covers title, tags, description, file names, and file content.
 
 Add entries to `data/extras.json`. Each needs `title`, `url`, and `tags`. `description` is optional.
 
+The featured tools section above search is maintained in `index.html`; update its links and descriptions there. Its icons are in `assets/tool-icons/`.
+
 ## Sync now button
 
 The footer link opens the workflow page in GitHub. Click **Run workflow** there. This needs you to be signed in with write access, which is the safe way to do it because a token in client-side JS would be public.

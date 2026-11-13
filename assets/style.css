@@ -129,6 +129,111 @@ main,
   .site-header h1 { font-size: 1.75rem; }
 }
 
+/* Featured tools */
+
+.tools { margin: 24px 0 32px; }
+
+.tools-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+  margin-bottom: 12px;
+}
+
+.tools-header h2 {
+  margin: 0;
+  font: 600 1rem/1.3 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tools-header p {
+  margin: 0;
+  font: 400 0.75rem/1.5 var(--font-mono);
+  color: var(--muted);
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+}
+
+.tool-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  min-height: 88px;
+  padding: 12px;
+  color: var(--fg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  text-decoration: none;
+  transition: background-color 100ms linear, border-color 100ms linear;
+}
+
+.tool-card:hover { background: var(--hover); }
+
+.tool-icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  overflow: hidden;
+  background: var(--code-bg);
+  border: 1px solid var(--line);
+}
+
+.tool-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.tool-icon-generic {
+  color: var(--accent);
+  font-size: 1.5rem;
+}
+
+.tool-content {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.tool-name {
+  font-weight: 600;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.tool-desc {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.tool-link-icon {
+  flex: none;
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .tools { margin-top: 28px; }
+  .tool-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .tool-card { align-items: flex-start; flex-wrap: wrap; }
+  .tool-icon { width: 48px; height: 48px; }
+  .tool-content { flex: 1 1 calc(100% - 60px); }
+  .tool-link-icon { margin: 0 0 0 auto; }
+}
+
 /* Controls */
 
 .controls { margin: 24px 0 16px; }
