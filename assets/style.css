@@ -116,6 +116,8 @@ main,
   text-transform: uppercase;
 }
 
+.site-header h1 i { color: #eab308; }
+
 .sub {
   margin: 8px 0 0;
   font: 400 0.75rem/1.5 var(--font-mono);
